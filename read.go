@@ -9,7 +9,7 @@ import (
 func Read(reader io.Reader, order binary.ByteOrder, data any) (err error) {
 	val := reflect.ValueOf(data)
 
-	if val.Kind() == reflect.Ptr {
+	if val.Kind() == reflect.Pointer {
 		val = val.Elem()
 	}
 
