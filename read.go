@@ -7,7 +7,11 @@ import (
 )
 
 func Read(reader io.Reader, order binary.ByteOrder, data any) (err error) {
-	val := reflect.ValueOf(data).Elem()
+	val := reflect.ValueOf(data)
+
+	if val.Kind() == reflect.Ptr {
+		val = val.Elem()
+	}
 
 	switch val.Kind() {
 	// Read structs inside structs
