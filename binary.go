@@ -5,6 +5,11 @@ import (
 	"io"
 )
 
+var (
+	BigEndian    = binary.BigEndian
+	LittleEndian = binary.LittleEndian
+)
+
 func Write(w io.Writer, order binary.ByteOrder, v any) (err error) {
 	e := encoder{
 		order:  order,
